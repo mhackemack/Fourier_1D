@@ -24,7 +24,7 @@ TransportType = 'SI';
 DSAType = 'MIP';
 legend_position = 'northwest';
 % XS inputs
-c = .999;
+c = .9;
 data.IPConstant = 4;
 data.XS.sigt = 1.0;
 data.XS.sigs = c*data.XS.sigt;
@@ -32,15 +32,15 @@ data.XS.siga = data.XS.sigt-data.XS.sigs;
 data.XS.D = 1/(3*data.XS.sigt);
 % geometric info
 ncells = 1; ndofs = 2*ncells;
-xmin = 1e-4; xmax = 1e4; xnum = 1e2;
+xmin = 1e0; xmax = 1e0; xnum = 1e0;
 [ddx, xtick_spacing] = get_logarithmic_x(xmin, xmax, xnum); 
 ddx = ddx'; nx = length(ddx);
 data.ncells = ncells; data.ndofs = ndofs;
 % Quad info
-quad = [2,4,8,16]; nquad = length(quad);
+quad = [2]; nquad = length(quad);
 data.SN.norm = 2;
 % Phase info
-np = 3;
+np = 4;
 phase = linspace(0,2*pi,np)';
 % Allocate Memory Space
 % ---------------------

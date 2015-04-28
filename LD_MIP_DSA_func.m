@@ -38,8 +38,8 @@ A = (siga*M + D*K) * PM;
 % ( [[u]] , [[b]] )
 A = A + kpen*[1,-1;-e,e];
 % ( {{Du}} , [[b]] )
-A = A + nR*D/2*[-(e+e0);(ep+e)]/dx*(-bR);   % right boundary
 A = A + nL*D/2*[-(e0+em);(e0+e)]/dx*(-bL);  % left boundary
+A = A + nR*D/2*[-(e+e0);(ep+e)]/dx*(-bR);   % right boundary
 % ( [[u]] , {{Db}} )
 A = A + nL*D/2*eR*[e0,-e0];        % left boundary
 A = A + nR*D/2*eL*[e,-e];          % right boundary
