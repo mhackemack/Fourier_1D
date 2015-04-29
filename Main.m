@@ -19,12 +19,13 @@ clear; close all; clc; format short;
 addpath(genpath('export_fig'));
 out_dir = 'outputs/';
 % Inputs
-plotting_bool = false;
+plotting_bool = true;
+printing_bool = false;
 TransportType = 'SI';
 DSAType = 'MIP';
 legend_position = 'northwest';
 % XS inputs
-c = .9;
+c = .9999;
 data.IPConstant = 4;
 data.XS.sigt = 1.0;
 data.XS.sigs = c*data.XS.sigt;
@@ -110,7 +111,9 @@ if plotting_bool
     cFig = figure(1);
     % Save Figures
     % ------------
-    f_name = [out_dir,'DSA_1D_',TransportType,'_',DSAType,'_C=',num2str(data.IPConstant)];
-    savefig(cFig,f_name)
-    export_fig(f_name,'-transparent')
+    if printing_bool
+        f_name = [out_dir,'DSA_1D_',TransportType,'_',DSAType,'_C=',num2str(data.IPConstant)];
+        savefig(cFig,f_name)
+        export_fig(f_name,'-transparent')
+    end
 end
