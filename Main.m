@@ -33,15 +33,15 @@ data.XS.siga = data.XS.sigt-data.XS.sigs;
 data.XS.D = 1/(3*data.XS.sigt);
 % geometric info
 ncells = 1; ndofs = 2*ncells;
-xmin = 1e0; xmax = 1e0; xnum = 1e0;
+xmin = 1e-3; xmax = 1e4; xnum = 1e3;
 [ddx, xtick_spacing] = get_logarithmic_x(xmin, xmax, xnum); 
 ddx = ddx'; nx = length(ddx);
 data.ncells = ncells; data.ndofs = ndofs;
 % Quad info
-quad = [2]; nquad = length(quad);
+quad = [2,4,8,16]; nquad = length(quad);
 data.SN.norm = 2;
 % Phase info
-np = 4;
+np = 3;
 phase = linspace(0,2*pi,np)';
 % Allocate Memory Space
 % ---------------------
@@ -81,11 +81,6 @@ for q=1:nquad
 end
 fprintf(rev_str); rev_str = [];
 
-% Build output Folder if it doesn't exist
-% ---------------------------------------
-if ~isequal(exist(out_dir, 'dir'),7)
-    mkdir(out_dir);
-end
 % Plot Solutions
 % --------------
 if plotting_bool
@@ -112,6 +107,7 @@ if plotting_bool
     % Save Figures
     % ------------
     if printing_bool
+        if ~isequal(exist(out_dir, 'dir'),7),mkdir(out_dir); end
         f_name = [out_dir,'DSA_1D_',TransportType,'_',DSAType,'_C=',num2str(data.IPConstant)];
         savefig(cFig,f_name)
         export_fig(f_name,'-transparent')

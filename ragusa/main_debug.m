@@ -8,7 +8,7 @@ SNQ.sn=4;
 
 % material
 tot = 1;
-sca = 0.999;
+sca = 0.9999;
 
 ncells=1;
 
@@ -20,8 +20,9 @@ ncells=1;
 % NPAR = structure containing the IP matrices
 [mt_nojac,ms_nojac,g,e,NPAR]=compute_elem1bis(tot,sca,ncells);
 
-n=40;
-dx_list = 2.^((-n:n)/4);
+n=81;
+dx_list = logspace(-3,3,n);
+% dx_list = 2.^((-n:n)/4);
 for i=1:length(dx_list)
     disp(i);
     
